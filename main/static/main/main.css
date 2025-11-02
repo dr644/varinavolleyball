@@ -1,0 +1,342 @@
+/* ---------- Global Styles ---------- */
+body {
+    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #F8F9FA;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background-color: #0A1A4F !important; /* Navy Blue */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #C5B358 !important; /* Vegas Gold */
+}
+
+.navbar-brand:hover {
+    color: #e0cb6a !important; /* lighter gold on hover */
+}
+
+.nav-link {
+    color: #F8F9FA !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #C5B358 !important;
+}
+
+/* ---------- Headings ---------- */
+h1, h2, h3, h4, h5 {
+    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #0A1A4F;
+    font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+    background-color: #0A1A4F;
+    border-color: #0A1A4F;
+}
+
+.btn-primary:hover {
+    background-color: #C5B358;
+    border-color: #C5B358;
+    color: #0A1A4F;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    border-radius: 10px;
+    border: 1px solid #DDD;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-body {
+    background-color: #FFFFFF;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #0A1A4F;
+    color: #F8F9FA;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #C5B358;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e0cb6a;
+}
+
+/* ---------- Links ---------- */
+a {
+    color: #0A1A4F;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #C5B358;
+}
+
+/* ---------- Hero Section ---------- */
+/* ---------- Hero Section ---------- */
+/* ---------- Hero Section ---------- */
+.hero-section {
+    background-color: #0A1A4F; /* Navy Blue */
+    color: #C5B358; /* Vegas Gold */
+    text-align: center;
+    padding: 20px 10px; /* tighter vertical padding */
+    min-height: auto; /* remove forced height */
+}
+
+.hero-section img {
+    display: block;
+    width: 100%;
+    height: 200px;           /* give it some height to scale within */
+    object-fit: contain;     /* keeps proportions */
+    object-position: center; /* centers the logo area */
+    transform: scale(1.8);   /* zoom into the visible part */
+    transform-origin: center;
+    margin: 0 auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease-in-out;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hero-section img:hover {
+    transform: scale(1.9);
+}
+
+
+.hero-section h2 {
+    font-size: 1.4rem;
+    margin-top: 5px;
+    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+
+
+/* ---------- Sub-Banner ---------- */
+.sub-banner {
+    background-color: #C5B358; /* Gold */
+    color: #0A1A4F; /* Navy */
+    text-align: center;
+    font-weight: 600;
+    padding: 12px 0;
+    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Content Section ---------- */
+.content-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.content-section h3 {
+    color: #0A1A4F;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-navy {
+    background-color: #0A1A4F;
+    color: #fff;
+    border: none;
+    margin: 5px;
+}
+
+.btn-gold {
+    background-color: #C5B358;
+    color: #0A1A4F;
+    border: none;
+    margin: 5px;
+}
+
+.btn-navy:hover {
+    background-color: #C5B358;
+    color: #0A1A4F;
+}
+
+.btn-gold:hover {
+    background-color: #0A1A4F;
+    color: #C5B358;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .content-section {
+        padding: 30px 10px;
+    }
+}
+
+
+/* ---------- Containers ---------- */
+.container {
+    margin-top: 20px;
+}
+
+/* ---------- Sponsors Section ---------- */
+.sponsors-section {
+    background-color: #C5B358; /* Vegas Gold */
+    color: #0A1A4F; /* Navy Blue */
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 4px solid #0A1A4F;
+}
+
+.sponsors-section h3 {
+    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.sponsor-logos img {
+    height: 80px;
+    width: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: transform 0.3s ease-in-out;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.sponsor-logos img:hover {
+    transform: scale(1.1);
+}
+
+
+
+/* ---------- Tables (if you use any later) ---*/
+
+th a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+th a:hover {
+  text-decoration: underline;
+}
+th a::after {
+  content: '';
+  margin-left: 4px;
+}
+
+.table th {
+  background-color: #0A1A4F; /* Navy */
+  color: #f5d580; /* Vegas gold */
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+.table-bordered th, .table-bordered td {
+  border-color: #ddd;
+}
+
+/* === FORM STYLING === */
+form {
+  font-family: Calibri, sans-serif;
+  color: #0A1A4F;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #0A1A4F;
+  letter-spacing: 0.5px;
+}
+
+.form-control,
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #f5d580;        /* vegas gold */
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0A1A4F;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus,
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #0A1A4F;
+  box-shadow: 0 0 8px rgba(10, 26, 79, 0.25);
+  outline: none;
+}
+
+.btn-gold {
+  background-color: #f5d580;
+  color: #0A1A4F;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-gold:hover {
+  background-color: #e5c56e;
+  transform: translateY(-2px);
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: #0A1A4F;
+  color: #f5d580;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card-footer a {
+  color: #0A1A4F;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}

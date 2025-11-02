@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container mt-4 text-center">
+  <h1>Team Roster</h1>
+  <table class="table table-striped table-bordered mt-3 align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>
+          <a href="?sort=number&dir={{ next_dir }}" class="text-white text-decoration-none">
+            #
+            {% if sort_field == "number" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort=name&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Name
+            {% if sort_field == "name" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort=position&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Position
+            {% if sort_field == "position" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort=year&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Year
+            {% if sort_field == "year" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in players %}
+      <tr>
+        <td>{{ p.number }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.position }}</td>
+        <td>{{ p.year }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

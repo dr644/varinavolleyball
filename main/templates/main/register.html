@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container mt-5" style="max-width: 520px;">
+  <div class="card shadow-lg border-0">
+    <div class="card-header text-center">
+      <h3 class="text-white">Create Account</h3>
+    </div>
+
+    <div class="card-body">
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <div class="mb-3 text-start">
+          <label class="form-label">First Name</label>
+          {{ form.first_name|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Last Name</label>
+          {{ form.last_name|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Email</label>
+          {{ form.email|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Password</label>
+          {{ form.password|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">I am a...</label>
+          {{ form.role|add_class:"form-select" }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Verification Question</label>
+          {{ form.math_question|add_class:"form-control" }}
+          <small class="text-muted d-block mb-2">Please solve to confirm you’re human.</small>
+          {{ form.math_answer|add_class:"form-control" }}
+        </div>
+
+        <button type="submit" class="btn btn-gold w-100 mt-2">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="card-footer text-center bg-light">
+      <small>Already have an account?
+        <a href="{% url 'login' %}">Log in</a>
+      </small>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

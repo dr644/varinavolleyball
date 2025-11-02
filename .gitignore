@@ -1,0 +1,20 @@
+# Django / Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+*.log
+venv/
+.env
+
+# Static / media files
+staticfiles/
+media/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container text-center mt-5" style="max-width: 500px;">
+  <div class="card p-4 shadow">
+    <h2 class="mb-3">Logout</h2>
+    <p>Are you sure you want to log out, {{ user.username }}?</p>
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger w-100 mb-2">Yes, Log me out</button>
+      <a href="{% url 'home' %}" class="btn btn-secondary w-100">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

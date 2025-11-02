@@ -1,0 +1,63 @@
+{% load static %}
+{% load group_tags %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Varina Lady Blue Devils Volleyball</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'main/main.css' %}">
+</head>
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+    <a class="navbar-brand fw-bold" href="{% url 'home' %}">🏐 Varina Volleyball</a>
+    <div class="navbar-nav ms-auto">
+      <a class="nav-link text-white" href="{% url 'roster' %}">Roster</a>
+      <a class="nav-link text-white" href="{% url 'schedule' %}">Schedule</a>
+      <a class="nav-link text-white" href="{% url 'statistics' %}">Stats</a>
+      {% if user.is_authenticated %}
+        <a class="nav-link text-white" href="#">Social</a>
+        {% if user.is_authenticated and user.profile.role == "player" %}
+          <a class="nav-link text-white" href="#">Team Page</a>
+        {% endif %}
+        <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+        <a class="nav-link text-white" href="{% url 'register' %}">Register</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="container mt-4">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- FOOTER -->
+<footer class="text-center py-3 mt-5" style="background-color:#0A1A4F;color:white;">
+  <p>© {% now "Y" %} Varina Lady Blue Devils Volleyball | Head Coach David Robinson</p>
+</footer>
+
+
+  <!-- BOOTSTRAP JS BUNDLE -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AUTO-CAROUSEL SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousels = document.querySelectorAll('.carousel');
+      carousels.forEach(c => {
+        new bootstrap.Carousel(c, {
+          interval: 4000,   // 4 seconds between slides
+          ride: 'carousel',
+          wrap: true,       // loop back to start
+          pause: false      // keep running even on hover
+        });
+      });
+    });
+  </script>
+</body>
+</html>

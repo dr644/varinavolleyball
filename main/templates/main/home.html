@@ -1,0 +1,118 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-section">
+  <h1>VARINA VOLLEYBALL</h1>
+  <img src="{% static 'main/vball.png' %}" alt="Lady Blue Devils Logo">
+  <h2>LADY BLUE DEVILS</h2>
+</section>
+
+<!-- SUB-BANNER -->
+<div class="sub-banner">
+  Connecting players, alumni, and supporters.
+</div>
+
+<!-- INTRO -->
+<section class="content-section">
+  <h3>Welcome to the Varina Lady Blue Devils Volleyball Program</h3>
+  <p>
+    Stay up to date with upcoming games, connect with teammates and alumni, and celebrate the success of our players.
+  </p>
+  <div class="mt-4">
+    <a href="{% url 'schedule' %}" class="btn btn-navy btn-lg">View Schedule</a>
+    <a href="{% url 'social' %}" class="btn btn-gold btn-lg">Visit Social Page</a>
+  </div>
+</section>
+
+<!-- RECENT / UPCOMING -->
+<section class="content-section">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Recent Updates</h3>
+      <p>Match recaps, player achievements, and program news.</p>
+    </div>
+    <div class="col-md-6">
+      <h3>Upcoming Matches</h3>
+      <p>See our next game dates, times, and locations. Join us and show your Blue Devil pride!</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYER SPOTLIGHT CAROUSEL -->
+<section class="carousel-section">
+  <h3 class="text-center mb-4">Player Spotlights</h3>
+
+  <div id="playerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-wrap="true" data-bs-pause="false">
+    <div class="carousel-inner">
+
+      <!-- Card 1 -->
+      <div class="carousel-item active">
+        <div class="card spotlight-card mx-auto">
+          <img src="{% static 'main/player1.jpg' %}" class="card-img-top" alt="Player 1">
+          <div class="card-body">
+            <h5 class="card-title">#6 — Virtuous Battle</h5>
+            <p class="card-text">Libero | Senior | Captain</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="carousel-item">
+        <div class="card spotlight-card mx-auto">
+          <img src="{% static 'main/player2.jpg' %}" class="card-img-top" alt="Player 2">
+          <div class="card-body">
+            <h5 class="card-title">#5 — Kori Chambers</h5>
+            <p class="card-text">Hitter/Middle | Senior | Captain</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="carousel-item">
+        <div class="card spotlight-card mx-auto">
+          <img src="{% static 'main/player3.jpg' %}" class="card-img-top" alt="Player 3">
+          <div class="card-body">
+            <h5 class="card-title">#7 — Milan Burton</h5>
+            <p class="card-text">Setter | Junior | Captain</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="carousel-item">
+        <div class="card spotlight-card mx-auto">
+          <img src="{% static 'main/player4.jpg' %}" class="card-img-top" alt="Player 4">
+          <div class="card-body">
+            <h5 class="card-title">#17 - Semaj Saunders</h5>
+            <p class="card-text">Middle | Junior | Captain</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#playerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#playerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+<!-- SPONSORS SECTION -->
+<section class="sponsors-section">
+  <h5>* THANK YOU TO OUR SPONSORS *</h5>
+  <div class="sponsor-logos">
+    <img src="{% static 'main/sponsor1.png' %}" alt="Sponsor 1">
+    <img src="{% static 'main/sponsor2.png' %}" alt="Sponsor 2">
+    <img src="{% static 'main/sponsor3.png' %}" alt="Sponsor 3">
+  </div>
+  Interested in supporting our program? Click here!
+</section>
+
+{% endblock %}

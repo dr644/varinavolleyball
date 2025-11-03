@@ -1,265 +1,266 @@
+/* =====================================================
+   VARINA VOLLEYBALL MAIN THEME
+   Navy: #0A1A4F | Vegas Gold: #C5B358 | Offwhite: #F8F9FA
+===================================================== */
+
 /* ---------- Global Styles ---------- */
 body {
-    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
-    background-color: #F8F9FA;
-    color: #212529;
-    margin: 0;
-    padding: 0;
+  font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+  background-color: #F8F9FA;
+  color: #212529;
+  margin: 0;
+  padding: 0;
 }
 
-
-
-
-/* ---------- Navbar ---------- */
+/* ---------- Navbar (Desktop + Mobile) ---------- */
 .navbar {
-    background-color: #0A1A4F !important; /* Navy Blue */
+  background-color: #0A1A4F;
+  padding: 0.6rem 1rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 20;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1100px;
 }
 
 .navbar-brand {
-    font-weight: bold;
-    color: #C5B358 !important; /* Vegas Gold */
+  font-weight: bold;
+  color: #C5B358 !important;
+  font-size: 1.3rem;
+  text-decoration: none;
 }
 
 .navbar-brand:hover {
-    color: #e0cb6a !important; /* lighter gold on hover */
+  color: #e0cb6a !important;
+}
+
+/* Nav links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .nav-link {
-    color: #F8F9FA !important;
-    transition: color 0.2s ease-in-out;
+  color: #F8F9FA !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
 }
 
 .nav-link:hover {
-    color: #C5B358 !important;
+  color: #C5B358 !important;
+}
+
+/* Hamburger icon */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background-color: #C5B358;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile navbar behavior */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #0A1A4F;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    padding: 10px 0;
+    border-top: 2px solid #C5B358;
+  }
+
+  #menu-toggle:checked + .menu-icon + .navbar-links {
+    display: flex;
+    animation: dropdown 0.25s ease-in;
+  }
+
+  @keyframes dropdown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-link {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
 }
 
 /* ---------- Headings ---------- */
 h1, h2, h3, h4, h5 {
-    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
-    color: #0A1A4F;
-    font-weight: 600;
-}
-
-/* ---------- Buttons ---------- */
-.btn-primary {
-    background-color: #0A1A4F;
-    border-color: #0A1A4F;
-}
-
-.btn-primary:hover {
-    background-color: #C5B358;
-    border-color: #C5B358;
-    color: #0A1A4F;
-}
-
-/* ---------- Cards ---------- */
-.card {
-    border-radius: 10px;
-    border: 1px solid #DDD;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.card-body {
-    background-color: #FFFFFF;
-}
-
-/* ---------- Footer ---------- */
-footer {
-    background-color: #0A1A4F;
-    color: #F8F9FA;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 40px;
-}
-
-footer a {
-    color: #C5B358;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #e0cb6a;
-}
-
-/* ---------- Links ---------- */
-a {
-    color: #0A1A4F;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #C5B358;
-}
-
-/* ---------- Hero Section ---------- */
-/* ---------- Hero Section ---------- */
-/* ---------- Hero Section ---------- */
-.hero-section {
-    background-color: #0A1A4F; /* Navy Blue */
-    color: #C5B358; /* Vegas Gold */
-    text-align: center;
-    padding: 20px 10px; /* tighter vertical padding */
-    min-height: auto; /* remove forced height */
-}
-
-.hero-section img {
-    display: block;
-    width: 100%;
-    height: 200px;           /* give it some height to scale within */
-    object-fit: contain;     /* keeps proportions */
-    object-position: center; /* centers the logo area */
-    transform: scale(1.8);   /* zoom into the visible part */
-    transform-origin: center;
-    margin: 0 auto;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    transition: transform 0.3s ease-in-out;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.hero-section img:hover {
-    transform: scale(1.9);
-}
-
-
-.hero-section h2 {
-    font-size: 1.4rem;
-    margin-top: 5px;
-    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
-}
-
-
-
-/* ---------- Sub-Banner ---------- */
-.sub-banner {
-    background-color: #C5B358; /* Gold */
-    color: #0A1A4F; /* Navy */
-    text-align: center;
-    font-weight: 600;
-    padding: 12px 0;
-    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
-    letter-spacing: 0.5px;
-}
-
-/* ---------- Content Section ---------- */
-.content-section {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.content-section h3 {
-    color: #0A1A4F;
-    font-weight: 700;
-    margin-bottom: 15px;
+  font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #0A1A4F;
+  font-weight: 600;
 }
 
 /* ---------- Buttons ---------- */
 .btn-navy {
-    background-color: #0A1A4F;
-    color: #fff;
-    border: none;
-    margin: 5px;
+  background-color: #0A1A4F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-gold {
-    background-color: #C5B358;
-    color: #0A1A4F;
-    border: none;
-    margin: 5px;
+  background-color: #C5B358;
+  color: #0A1A4F;
+  border: none;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-navy:hover {
-    background-color: #C5B358;
-    color: #0A1A4F;
+  background-color: #C5B358;
+  color: #0A1A4F;
 }
 
 .btn-gold:hover {
-    background-color: #0A1A4F;
-    color: #C5B358;
+  background-color: #0A1A4F;
+  color: #C5B358;
 }
 
-/* ---------- Responsive Layout ---------- */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 10px;
-    }
-
-    .hero-section h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-section h2 {
-        font-size: 1.6rem;
-    }
-
-    .content-section {
-        padding: 30px 10px;
-    }
+/* ---------- Hero Section ---------- */
+.hero-section {
+  background-color: #0A1A4F;
+  color: #C5B358;
+  text-align: center;
+  padding: 20px 10px;
 }
 
-
-/* ---------- Containers ---------- */
-.container {
-    margin-top: 20px;
+.hero-section img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.8);
+  transform-origin: center;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease-in-out;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* ---------- Sponsors Section ---------- */
-.sponsors-section {
-    background-color: #C5B358; /* Vegas Gold */
-    color: #0A1A4F; /* Navy Blue */
-    text-align: center;
-    padding: 30px 20px;
-    border-top: 4px solid #0A1A4F;
+.hero-section img:hover {
+  transform: scale(1.9);
 }
 
-.sponsors-section h3 {
-    font-family: Calibri, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+.hero-section h2 {
+  font-size: 1.4rem;
+  margin-top: 5px;
 }
 
-.sponsor-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.sponsor-logos img {
-    height: 80px;
-    width: auto;
-    user-select: none;
-    -webkit-user-drag: none;
-    transition: transform 0.3s ease-in-out;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-.sponsor-logos img:hover {
-    transform: scale(1.1);
-}
-
-
-
-/* ---------- Tables (if you use any later) ---*/
-
-th a {
-  color: white;
-  text-decoration: none;
+/* ---------- Sub-Banner ---------- */
+.sub-banner {
+  background-color: #C5B358;
+  color: #0A1A4F;
+  text-align: center;
   font-weight: 600;
+  padding: 12px 0;
+  letter-spacing: 0.5px;
 }
-th a:hover {
+
+/* ---------- Content Section ---------- */
+.content-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.content-section h3 {
+  color: #0A1A4F;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border-radius: 10px;
+  border: 1px solid #DDD;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.card-header {
+  background-color: #0A1A4F;
+  color: #C5B358;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card-body {
+  background-color: #FFFFFF;
+}
+
+.card-footer a {
+  color: #0A1A4F;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card-footer a:hover {
   text-decoration: underline;
 }
-th a::after {
-  content: '';
-  margin-left: 4px;
+
+/* ---------- Player Images ---------- */
+.card img,
+.player-card img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
+/* ---------- Tables ---------- */
 .table th {
-  background-color: #0A1A4F; /* Navy */
-  color: #f5d580; /* Vegas gold */
+  background-color: #0A1A4F;
+  color: #f5d580;
 }
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f8f9fa;
@@ -268,16 +269,10 @@ th a::after {
   border-color: #ddd;
 }
 
-/* === FORM STYLING === */
+/* ---------- Forms ---------- */
 form {
   font-family: Calibri, sans-serif;
   color: #0A1A4F;
-}
-
-.form-label {
-  font-weight: bold;
-  color: #0A1A4F;
-  letter-spacing: 0.5px;
 }
 
 .form-control,
@@ -286,7 +281,7 @@ form select,
 form textarea {
   width: 100%;
   padding: 10px 14px;
-  border: 2px solid #f5d580;        /* vegas gold */
+  border: 2px solid #f5d580;
   border-radius: 6px;
   background-color: #ffffff;
   color: #0A1A4F;
@@ -303,259 +298,85 @@ form textarea:focus {
   outline: none;
 }
 
-.btn-gold {
-  background-color: #f5d580;
+/* ---------- Social Feed ---------- */
+.social-feed .btn-create-post {
+  background-color: #C5B358;
   color: #0A1A4F;
-  border: none;
-  font-weight: bold;
-  letter-spacing: 0.8px;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-gold:hover {
-  background-color: #e5c56e;
-  transform: translateY(-2px);
-}
-
-.card {
-  border: none;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-}
-
-.card-header {
-  background-color: #0A1A4F;
-  color: #f5d580;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.card-footer a {
-  color: #0A1A4F;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
-}
-
-/* ===== Varina Volleyball Theme Enhancements (Social Page Support) ===== */
-
-/* Custom theme variables */
-:root {
-  --navy: #0A1A4F;
-  --vegas-gold: #C5B358;
-  --vegas-gold-light: #e5c56e;
-  --offwhite: #F8F9FA;
-}
-
-/* Generic theme buttons for reuse */
-.btn-navy {
-  background-color: var(--navy);
-  color: var(--offwhite);
-  border: none;
-  font-weight: 600;
-  border-radius: 6px;
-  padding: 8px 16px;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-navy:hover {
-  background-color: var(--vegas-gold);
-  color: var(--navy);
-  transform: translateY(-2px);
-}
-
-.btn-gold {
-  background-color: var(--vegas-gold);
-  color: var(--navy);
-  border: none;
-  font-weight: 600;
-  border-radius: 6px;
-  padding: 8px 16px;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-gold:hover {
-  background-color: var(--navy);
-  color: var(--vegas-gold);
-  transform: translateY(-2px);
-}
-
-/* Specific tweak for the social feed button so it pops on light backgrounds */
-.social-feed .btn-gold,
-.btn-create-post {
-  background-color: var(--vegas-gold);
-  color: var(--navy);
   font-weight: 700;
   padding: 10px 18px;
   border-radius: 8px;
 }
 
-.social-feed .btn-gold:hover,
-.btn-create-post:hover {
-  background-color: var(--navy);
-  color: var(--vegas-gold);
+.social-feed .btn-create-post:hover {
+  background-color: #0A1A4F;
+  color: #C5B358;
 }
 
-/* Optional: slight contrast fix for text over white cards on the social page */
-.social-feed .card,
-.social-feed .post-container {
-  background-color: #ffffff;
+.social-feed .bg-white {
+  padding: 16px;
   border: 1px solid rgba(10, 26, 79, 0.15);
 }
 
-.social-feed h1,
-.social-feed h2 {
-  color: var(--navy);
-}
-
-.alert-warning {
+/* ---------- Sponsors Section ---------- */
+.sponsors-section {
   background-color: #C5B358;
   color: #0A1A4F;
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 4px solid #0A1A4F;
 }
 
-.alert-success {
+.sponsors-section h3 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.sponsor-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.sponsor-logos img {
+  height: 80px;
+  width: auto;
+  transition: transform 0.3s ease-in-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.sponsor-logos img:hover {
+  transform: scale(1.1);
+}
+
+/* ---------- Footer ---------- */
+footer {
   background-color: #0A1A4F;
   color: #F8F9FA;
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 40px;
 }
 
-/* ---------- MOBILE OPTIMIZATION ---------- */
+footer a {
+  color: #C5B358;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #e0cb6a;
+}
+
+/* ---------- Mobile Adjustments ---------- */
 @media (max-width: 768px) {
-
-  /* Navbar */
-  .navbar-brand {
-      font-size: 1.1rem;
-  }
-
-  .nav-link {
-      display: block;
-      padding: 8px 0;
-  }
-
-  /* Hero Section */
-  .hero-section {
-      padding: 30px 10px;
-  }
-
-  .hero-section img {
-      height: 120px;
-      transform: scale(1.4);
-  }
-
-  .hero-section h2 {
-      font-size: 1rem;
-      margin-top: 4px;
-  }
-
-  /* Content Sections */
-  .content-section {
-      padding: 25px 10px;
-  }
-
-  .content-section h3 {
-      font-size: 1.2rem;
-  }
-
-  /* Buttons */
-  .btn-navy,
-  .btn-gold {
-      display: block;
-      width: 100%;
-      margin: 6px 0;
-      padding: 10px;
-      font-size: 1rem;
-  }
-
-  /* Social feed cards */
-  .social-feed .bg-white {
-      padding: 12px;
-  }
-
-  .social-feed h2 {
-      font-size: 1.1rem;
-  }
-
-  iframe,
-  img {
-      max-width: 100%;
-      height: auto;
-  }
-
-  /* Sponsors */
-  .sponsor-logos {
-      flex-direction: column;
-      gap: 20px;
-  }
-
-  .sponsor-logos img {
-      height: 60px;
-  }
-
-  footer {
-      font-size: 0.9rem;
-      padding: 12px 5px;
-  }
+  .hero-section img { height: 120px; transform: scale(1.4); }
+  .hero-section h2 { font-size: 1rem; }
+  .content-section { padding: 25px 10px; }
+  .btn-navy, .btn-gold { width: 100%; margin: 6px 0; padding: 10px; }
+  .sponsor-logos { flex-direction: column; gap: 20px; }
+  .sponsor-logos img { height: 60px; }
+  footer { font-size: 0.9rem; padding: 12px 5px; }
+  .card img, .player-card img { max-width: 200px; }
 }
-
-/* ---------- MOBILE NAVBAR & PLAYER CARD FIX ---------- */
-@media (max-width: 768px) {
-
-  /* Navbar collapse */
-  .navbar {
-      flex-wrap: wrap;
-      padding: 0.5rem 1rem;
-  }
-
-  .navbar .navbar-nav {
-      flex-direction: row;            /* stay horizontal */
-      flex-wrap: wrap;               /* allow wrapping if needed */
-      justify-content: flex-end;
-      gap: 8px;                      /* small gap between links */
-  }
-
-  .navbar .nav-link {
-      padding: 6px 10px;
-      font-size: 0.95rem;
-  }
-
-  .navbar-brand {
-      font-size: 1.1rem;
-  }
-
-  /* Prevent huge vertical stacking */
-  @media (max-width: 600px) {
-      .navbar .navbar-nav {
-          flex-direction: column;     /* only stack on very small screens */
-          align-items: flex-start;
-      }
-  }
-
-  /* Player cards */
-  .card img,
-  .player-card img {
-      width: 100%;
-      height: auto;
-      max-width: 200px;              /* prevents giant scaling */
-      display: block;
-      margin: 0 auto;
-      border-radius: 10px;
-  }
-
-  .card-body {
-      text-align: center;
-  }
-
-  .card {
-      margin-bottom: 15px;
-  }
-}
-

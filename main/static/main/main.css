@@ -391,17 +391,31 @@ footer a:hover {
   display: inline-block;
 }
 
-.dropdown-toggle::after {
-  content: "";
+/* Hidden checkbox for mobile toggle */
+.dropdown-checkbox {
+  display: none;
 }
 
+/* Dropdown toggle link */
+.dropdown-toggle {
+  cursor: pointer;
+  color: #F8F9FA;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Dropdown menu (default hidden) */
 .dropdown-menu {
   display: none;
   position: absolute;
-  background-color: #0A1A4F; /* navy */
+  top: 100%;
+  left: 0;
+  background-color: #0A1A4F;
   border: 1px solid #C5B358;
   border-radius: 6px;
-  min-width: 140px;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 5px 0;
   z-index: 1000;
 }
 
@@ -410,7 +424,7 @@ footer a:hover {
   color: #F8F9FA;
   padding: 10px 14px;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .dropdown-item:hover {
@@ -418,28 +432,41 @@ footer a:hover {
   color: #0A1A4F;
 }
 
-/* Show dropdown on hover (desktop) */
-.dropdown:hover .dropdown-menu {
-  display: block;
+/* ---------- Desktop Hover ---------- */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
 
-/* Mobile dropdown (within hamburger) */
+/* ---------- Mobile Tap-to-Expand ---------- */
 @media (max-width: 768px) {
+  .dropdown {
+    width: 100%;
+  }
+
   .dropdown-menu {
     position: static;
     border: none;
     background-color: transparent;
     box-shadow: none;
-    padding-left: 10px;
+    padding: 0;
+  }
+
+  /* ✅ Only show when the roster checkbox is checked */
+  .dropdown-checkbox:checked + .dropdown-toggle + .dropdown-menu {
+    display: block;
   }
 
   .dropdown-item {
-    padding: 8px 10px;
+    padding: 10px 20px;
     color: #F8F9FA;
+    border-left: 3px solid transparent;
   }
 
   .dropdown-item:hover {
-    background-color: transparent;
+    background-color: rgba(197, 179, 88, 0.2);
+    border-left: 3px solid #C5B358;
     color: #C5B358;
   }
 }

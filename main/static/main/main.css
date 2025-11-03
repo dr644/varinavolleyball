@@ -427,3 +427,135 @@ form textarea:focus {
   padding: 8px 12px;
   margin-bottom: 10px;
 }
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .navbar-brand {
+      font-size: 1.1rem;
+  }
+
+  .nav-link {
+      display: block;
+      padding: 8px 0;
+  }
+
+  /* Hero Section */
+  .hero-section {
+      padding: 30px 10px;
+  }
+
+  .hero-section img {
+      height: 120px;
+      transform: scale(1.4);
+  }
+
+  .hero-section h2 {
+      font-size: 1rem;
+      margin-top: 4px;
+  }
+
+  /* Content Sections */
+  .content-section {
+      padding: 25px 10px;
+  }
+
+  .content-section h3 {
+      font-size: 1.2rem;
+  }
+
+  /* Buttons */
+  .btn-navy,
+  .btn-gold {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px;
+      font-size: 1rem;
+  }
+
+  /* Social feed cards */
+  .social-feed .bg-white {
+      padding: 12px;
+  }
+
+  .social-feed h2 {
+      font-size: 1.1rem;
+  }
+
+  iframe,
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  /* Sponsors */
+  .sponsor-logos {
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .sponsor-logos img {
+      height: 60px;
+  }
+
+  footer {
+      font-size: 0.9rem;
+      padding: 12px 5px;
+  }
+}
+
+/* ---------- MOBILE NAVBAR & PLAYER CARD FIX ---------- */
+@media (max-width: 768px) {
+
+  /* Navbar collapse */
+  .navbar {
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+  }
+
+  .navbar .navbar-nav {
+      flex-direction: row;            /* stay horizontal */
+      flex-wrap: wrap;               /* allow wrapping if needed */
+      justify-content: flex-end;
+      gap: 8px;                      /* small gap between links */
+  }
+
+  .navbar .nav-link {
+      padding: 6px 10px;
+      font-size: 0.95rem;
+  }
+
+  .navbar-brand {
+      font-size: 1.1rem;
+  }
+
+  /* Prevent huge vertical stacking */
+  @media (max-width: 600px) {
+      .navbar .navbar-nav {
+          flex-direction: column;     /* only stack on very small screens */
+          align-items: flex-start;
+      }
+  }
+
+  /* Player cards */
+  .card img,
+  .player-card img {
+      width: 100%;
+      height: auto;
+      max-width: 200px;              /* prevents giant scaling */
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+  }
+
+  .card-body {
+      text-align: center;
+  }
+
+  .card {
+      margin-bottom: 15px;
+  }
+}
+

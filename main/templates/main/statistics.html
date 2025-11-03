@@ -10,15 +10,12 @@
         <th><a href="?sort=sets_played&dir={{ next_dir }}" class="text-white text-decoration-none">Sets {% if sort_field == "sets_played" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=serves&dir={{ next_dir }}" class="text-white text-decoration-none">Serves {% if sort_field == "serves" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=serve_aces&dir={{ next_dir }}" class="text-white text-decoration-none">Aces {% if sort_field == "serve_aces" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=serve_errors&dir={{ next_dir }}" class="text-white text-decoration-none">Serve Errors {% if sort_field == "serve_errors" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=digs&dir={{ next_dir }}" class="text-white text-decoration-none">Digs {% if sort_field == "digs" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=assists&dir={{ next_dir }}" class="text-white text-decoration-none">Assists {% if sort_field == "assists" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=blocks&dir={{ next_dir }}" class="text-white text-decoration-none">Blocks {% if sort_field == "blocks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=attacks&dir={{ next_dir }}" class="text-white text-decoration-none">Attacks {% if sort_field == "attacks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=kills&dir={{ next_dir }}" class="text-white text-decoration-none">Kills {% if sort_field == "kills" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
         <th><a href="?sort=kill_percentage&dir={{ next_dir }}" class="text-white text-decoration-none">Kill % {% if sort_field == "kill_percentage" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=attack_errors&dir={{ next_dir }}" class="text-white text-decoration-none">Attack Errors {% if sort_field == "attack_errors" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=receive_errors&dir={{ next_dir }}" class="text-white text-decoration-none">Receive Errors {% if sort_field == "receive_errors" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
       </tr>
     </thead>
     <tbody>
@@ -29,15 +26,12 @@
         <td>{{ s.sets_played }}</td>
         <td>{{ s.serves }}</td>
         <td>{{ s.serve_aces }}</td>
-        <td>{{ s.serve_errors }}</td>
         <td>{{ s.digs }}</td>
         <td>{{ s.assists }}</td>
         <td>{{ s.blocks }}</td>
         <td>{{ s.attacks }}</td>
         <td>{{ s.kills }}</td>
         <td>{{ s.kill_percentage }}%</td>
-        <td>{{ s.attack_errors }}</td>
-        <td>{{ s.receive_errors }}</td>
       </tr>
       {% endfor %}
     </tbody>

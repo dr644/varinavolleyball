@@ -30,9 +30,6 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ['varinavolleyball.com', 'www.varinavolleyball.com', '127.0.0.1']
 
 
-#REMOVE THIS WHEN MOVING TO PRODUCTION
-
-
 # Application definition
 
 INSTALLED_APPS = [

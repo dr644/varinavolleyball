@@ -12,6 +12,10 @@ body {
   padding: 0;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* ---------- Navbar (Desktop + Mobile) ---------- */
 .navbar {
   background-color: #0A1A4F;

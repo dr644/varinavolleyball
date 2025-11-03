@@ -54,13 +54,13 @@ def roster(request, level=None):
     return render(request, "main/roster.html", context)
 
 
-
 def statistics(request):
     sort_field = request.GET.get("sort", "number")
     direction = request.GET.get("dir", "asc")
+    level = request.GET.get("level", "Varsity")  # Default view
 
-    # Base queryset
-    stats = list(Player.objects.all())
+    # Base queryset filtered by Varsity or JV
+    stats = list(Player.objects.filter(level=level))
 
     # Compute kill percentage for everyone (always)
     for s in stats:
@@ -69,7 +69,7 @@ def statistics(request):
         else:
             s.kill_percentage = 0.0
 
-    # Handle sorting, including the computed kill_percentage
+    # Handle sorting (including computed kill_percentage)
     if sort_field == "kill_percentage":
         stats.sort(key=lambda x: x.kill_percentage, reverse=(direction == "desc"))
     else:
@@ -83,8 +83,10 @@ def statistics(request):
         "sort_field": sort_field,
         "direction": direction,
         "next_dir": next_dir,
+        "level": level,  # Pass current team level to template
     }
     return render(request, "main/statistics.html", context)
+
 
 
 def login_view(request):

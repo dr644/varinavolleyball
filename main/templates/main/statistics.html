@@ -2,20 +2,27 @@
 {% block content %}
 <div class="container mt-4 text-center">
   <h1>Team Statistics</h1>
+
+  <!-- Varsity / JV Toggle Tabs -->
+  <div class="level-tabs">
+    <a href="?level=Varsity" class="tab {% if level == 'Varsity' or not level %}active{% endif %}">Varsity</a>
+    <a href="?level=JV" class="tab {% if level == 'JV' %}active{% endif %}">JV</a>
+  </div>
+
   <table class="table table-striped table-bordered mt-3 align-middle">
     <thead class="table-dark">
       <tr>
-        <th><a href="?sort=number&dir={{ next_dir }}" class="text-white text-decoration-none"># {% if sort_field == "number" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=name&dir={{ next_dir }}" class="text-white text-decoration-none">Player {% if sort_field == "name" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=sets_played&dir={{ next_dir }}" class="text-white text-decoration-none">Sets {% if sort_field == "sets_played" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=serves&dir={{ next_dir }}" class="text-white text-decoration-none">Serves {% if sort_field == "serves" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=serve_aces&dir={{ next_dir }}" class="text-white text-decoration-none">Aces {% if sort_field == "serve_aces" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=digs&dir={{ next_dir }}" class="text-white text-decoration-none">Digs {% if sort_field == "digs" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=assists&dir={{ next_dir }}" class="text-white text-decoration-none">Assists {% if sort_field == "assists" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=blocks&dir={{ next_dir }}" class="text-white text-decoration-none">Blocks {% if sort_field == "blocks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=attacks&dir={{ next_dir }}" class="text-white text-decoration-none">Attacks {% if sort_field == "attacks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=kills&dir={{ next_dir }}" class="text-white text-decoration-none">Kills {% if sort_field == "kills" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
-        <th><a href="?sort=kill_percentage&dir={{ next_dir }}" class="text-white text-decoration-none">Kill % {% if sort_field == "kill_percentage" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=number&dir={{ next_dir }}" class="text-white text-decoration-none"># {% if sort_field == "number" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=name&dir={{ next_dir }}" class="text-white text-decoration-none">Player {% if sort_field == "name" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=sets_played&dir={{ next_dir }}" class="text-white text-decoration-none">Sets {% if sort_field == "sets_played" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=serves&dir={{ next_dir }}" class="text-white text-decoration-none">Serves {% if sort_field == "serves" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=serve_aces&dir={{ next_dir }}" class="text-white text-decoration-none">Aces {% if sort_field == "serve_aces" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=digs&dir={{ next_dir }}" class="text-white text-decoration-none">Digs {% if sort_field == "digs" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=assists&dir={{ next_dir }}" class="text-white text-decoration-none">Assists {% if sort_field == "assists" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=blocks&dir={{ next_dir }}" class="text-white text-decoration-none">Blocks {% if sort_field == "blocks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=attacks&dir={{ next_dir }}" class="text-white text-decoration-none">Attacks {% if sort_field == "attacks" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=kills&dir={{ next_dir }}" class="text-white text-decoration-none">Kills {% if sort_field == "kills" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
+        <th><a href="?level={{ level }}&sort=kill_percentage&dir={{ next_dir }}" class="text-white text-decoration-none">Kill % {% if sort_field == "kill_percentage" %}{% if direction == "asc" %}▲{% else %}▼{% endif %}{% endif %}</a></th>
       </tr>
     </thead>
     <tbody>

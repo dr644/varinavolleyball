@@ -384,3 +384,62 @@ footer a:hover {
   footer { font-size: 0.9rem; padding: 12px 5px; }
   .card img, .player-card img { max-width: 200px; }
 }
+
+/* ---------- Dropdown Menu ---------- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle::after {
+  content: "";
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #0A1A4F; /* navy */
+  border: 1px solid #C5B358;
+  border-radius: 6px;
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: block;
+  color: #F8F9FA;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #C5B358;
+  color: #0A1A4F;
+}
+
+/* Show dropdown on hover (desktop) */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Mobile dropdown (within hamburger) */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    padding-left: 10px;
+  }
+
+  .dropdown-item {
+    padding: 8px 10px;
+    color: #F8F9FA;
+  }
+
+  .dropdown-item:hover {
+    background-color: transparent;
+    color: #C5B358;
+  }
+}

@@ -27,7 +27,16 @@
 
       <div class="navbar-links">
         <a class="nav-link" href="{% url 'schedule' %}">Schedule</a>
-        <a class="nav-link" href="{% url 'roster' %}">Roster</a>
+
+        <!-- Roster Dropdown -->
+        <div class="dropdown">
+          <a href="#" class="nav-link dropdown-toggle">Roster ▾</a>
+          <div class="dropdown-menu">
+            <a href="{% url 'roster_varsity' %}" class="dropdown-item">Varsity</a>
+            <a href="{% url 'roster_jv' %}" class="dropdown-item">JV</a>
+          </div>
+        </div>
+
         <a class="nav-link" href="{% url 'statistics' %}">Statistics</a>
         <a class="nav-link" href="{% url 'social_feed' %}">Social</a>
 
@@ -39,6 +48,7 @@
       </div>
     </div>
   </nav>
+
 
 
   <!-- PAGE CONTENT -->

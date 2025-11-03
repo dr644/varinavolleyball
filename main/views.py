@@ -18,12 +18,17 @@ def home(request):
 def schedule(request):
     return render(request, 'main/schedule.html')
 
-def roster(request):
+def roster(request, level=None):
+    level = level or request.GET.get("level")  # Ensure level is captured either way
     sort_field = request.GET.get("sort", "number")
     direction = request.GET.get("dir", "asc")
 
     # Base queryset
     players = Player.objects.all()
+
+    # Filter by level if provided (Varsity or JV)
+    if level in ["Varsity", "JV"]:
+        players = players.filter(level=level)
 
     # Handle custom year sorting
     if sort_field == "year":
@@ -37,7 +42,6 @@ def roster(request):
         order_by = f"-{sort_field}" if direction == "desc" else sort_field
         players = players.order_by(order_by)
 
-    # Determine next sort direction
     next_dir = "desc" if direction == "asc" else "asc"
 
     context = {
@@ -45,8 +49,10 @@ def roster(request):
         "sort_field": sort_field,
         "direction": direction,
         "next_dir": next_dir,
+        "level": level,  # ✅ ensure this makes it to the template
     }
     return render(request, "main/roster.html", context)
+
 
 
 def statistics(request):

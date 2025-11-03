@@ -29,12 +29,18 @@ class Player(models.Model):
         ('Senior', 'Senior'),
     ]
 
+    LEVEL_CHOICES = [
+        ('Varsity', 'Varsity'),
+        ('JV', 'JV'),
+    ]
+
     # Roster info
     number = models.PositiveIntegerField(default=0)
     name = models.CharField(max_length=100)
     height = models.CharField(max_length=10)
     position = models.CharField(max_length=20)
     year = models.CharField(max_length=20, choices=YEAR_CHOICES)
+    level = models.CharField(max_length=10, choices=LEVEL_CHOICES, default='Varsity')
 
     # Statistics
     sets_played = models.PositiveIntegerField(default=0)
@@ -51,6 +57,7 @@ class Player(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class Profile(models.Model):

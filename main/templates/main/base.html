@@ -19,7 +19,7 @@
       <a class="nav-link text-white" href="{% url 'schedule' %}">Schedule</a>
       <a class="nav-link text-white" href="{% url 'statistics' %}">Stats</a>
       {% if user.is_authenticated %}
-        <a class="nav-link text-white" href="#">Social</a>
+        <a class="nav-link text-white" href="{% url 'social_feed' %}">Social</a>
         {% if user.is_authenticated and user.profile.role == "player" %}
           <a class="nav-link text-white" href="#">Team Page</a>
         {% endif %}

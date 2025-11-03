@@ -82,19 +82,29 @@ def statistics(request):
 
 
 def login_view(request):
+    # If user was redirected here from @login_required
+    if 'next' in request.GET:
+        messages.warning(request, "You must be logged in to access that page.")
+
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
             messages.success(request, f"Welcome back, {user.username}!")
-            return redirect("home")  # redirect anywhere you like
+            # Respect ?next= so user returns where they came from
+            next_url = request.POST.get('next') or request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            return redirect("home")
         else:
             messages.error(request, "Invalid username or password.")
 
-    return render(request, "main/login.html")
+    # Keep ?next= so form submits correctly
+    return render(request, "main/login.html", {"next": request.GET.get("next", "")})
+
 
 def logout_view(request):
     logout(request)
@@ -128,20 +138,6 @@ def register(request):
 
     return render(request, "main/register.html", {"form": form})
 
-
-@login_required
-def social(request):
-    posts = Post.objects.order_by('-timestamp')
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('social')
-    else:
-        form = PostForm()
-    return render(request, 'main/social.html', {'form': form, 'posts': posts})
 
 @login_required
 @user_passes_test(lambda u: u.groups.filter(name='CurrentPlayers').exists())

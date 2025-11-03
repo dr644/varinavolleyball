@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="social-feed max-w-3xl mx-auto mt-6 px-4">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-navy">Varina Volleyball Community</h1>
+    <a href="{% url 'create_post' %}" class="btn-gold btn-create-post">+ New Post</a>
+  </div>
+
+  <!-- Posts Loop -->
+  {% for post in posts %}
+  <div class="bg-white shadow-md rounded-2xl p-4 mb-6 border border-gray-200">
+    <div class="flex justify-between items-start mb-2">
+      <h2 class="text-xl font-semibold text-blue-800 break-words">
+        <a href="{% url 'post_detail' post.id %}" class="hover:underline">{{ post.title }}</a>
+      </h2>
+      <form action="{% url 'upvote_post' post.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="text-gray-500 hover:text-blue-600">👍 {{ post.total_upvotes }}</button>
+      </form>
+    </div>
+
+    <p class="text-gray-600 text-sm mb-3">
+      Posted by <span class="font-semibold text-navy">{{ post.user.username }}</span>
+      • {{ post.created_at|timesince }} ago
+    </p>
+
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="rounded-xl mt-2 w-full max-h-[500px] object-cover" />
+
+    {% elif post.video_url %}
+      <div class="video-wrapper mt-3 aspect-video">
+        <iframe
+          src="{{ post.video_url }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          class="w-full h-full rounded-xl">
+        </iframe>
+      </div>
+
+    {% elif post.link_url %}
+      <a href="{{ post.link_url }}" target="_blank" rel="noopener" class="text-blue-600 underline break-words">
+        {{ post.link_url }}
+      </a>
+
+    {% else %}
+      <p class="mt-2 text-gray-700">{{ post.content|truncatewords:40 }}</p>
+    {% endif %}
+  </div>
+  {% empty %}
+  <p class="text-center text-gray-500 mt-10">No posts yet. Be the first to share something!</p>
+  {% endfor %}
+</div>
+{% endblock %}

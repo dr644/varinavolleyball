@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto mt-8 bg-white p-6 rounded-2xl shadow-md">
+  <h1 class="text-2xl font-bold mb-2">{{ post.title }}</h1>
+  <p class="text-gray-600 text-sm mb-4">Posted by {{ post.user.username }} • {{ post.created_at|timesince }} ago</p>
+  {% if post.image %}
+    <img src="{{ post.image.url }}" class="rounded-xl mb-4" />
+  {% elif post.video_url %}
+    <iframe src="{{ post.video_url }}" class="w-full rounded-xl mb-4"></iframe>
+  {% elif post.link_url %}
+    <a href="{{ post.link_url }}" target="_blank" class="text-blue-500 underline mb-4 block">{{ post.link_url }}</a>
+  {% else %}
+    <p class="mb-4">{{ post.content }}</p>
+  {% endif %}
+  <form action="{% url 'upvote_post' post.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="text-gray-500 hover:text-blue-600">👍 {{ post.total_upvotes }}</button>
+  </form>
+
+  <hr class="my-6">
+
+  <h3 class="text-lg font-semibold mb-3">Comments</h3>
+  {% for comment in comments %}
+    <div class="border-t border-gray-100 py-2">
+      <p><span class="font-bold">{{ comment.user.username }}</span>: {{ comment.content }}</p>
+      <p class="text-sm text-gray-500">{{ comment.created_at|timesince }} ago</p>
+    </div>
+  {% empty %}
+    <p class="text-gray-500">No comments yet.</p>
+  {% endfor %}
+
+  {% if user.is_authenticated %}
+  <form method="post" action="{% url 'add_comment' post.id %}" class="mt-4">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Comment</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}

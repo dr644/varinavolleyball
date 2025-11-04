@@ -124,6 +124,7 @@ def logout_view(request):
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST, request=request)
+
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.email
@@ -136,12 +137,17 @@ def register(request):
             profile.role = role
             profile.save()
 
-            # success: clear the CAPTCHA so a new one is generated next time
-            request.session.pop("captcha_sum",  None)
+            # ✅ clear CAPTCHA only after success
+            request.session.pop("captcha_sum", None)
             request.session.pop("captcha_text", None)
 
             messages.success(request, "Registration successful! You can now log in.")
             return redirect("login")
+
+        else:
+            # ✅ show global error message if invalid form
+            messages.error(request, "Please correct the errors below and try again.")
+
     else:
         form = RegisterForm(request=request)
 

@@ -6,8 +6,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('register/', views.register, name='register'),
     path("roster/", views.roster, name="roster"),
-    path("roster/varsity/", views.roster, kwargs={"level": "Varsity"}, name="roster_varsity"),
-    path("roster/jv/", views.roster, kwargs={"level": "JV"}, name="roster_jv"),
     path('schedule/', views.schedule, name='schedule'),
     path('statistics/', views.statistics, name='statistics'),
     path('team/', views.team, name='team'),

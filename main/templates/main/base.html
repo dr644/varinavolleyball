@@ -27,19 +27,7 @@
 
       <div class="navbar-links">
         <a class="nav-link" href="{% url 'schedule' %}">Schedule</a>
-
-        <!-- Roster Dropdown -->
-        <div class="dropdown">
-          <input type="checkbox" id="roster-toggle" class="dropdown-checkbox">
-          <label for="roster-toggle" class="nav-link dropdown-toggle">Roster ▾</label>
-          <div class="dropdown-menu">
-            <a href="{% url 'roster_varsity' %}" class="dropdown-item">Varsity</a>
-            <a href="{% url 'roster_jv' %}" class="dropdown-item">JV</a>
-          </div>
-        </div>
-
-
-
+        <a class="nav-link" href="{% url 'roster' %}">Roster</a>
         <a class="nav-link" href="{% url 'statistics' %}">Statistics</a>
         <a class="nav-link" href="{% url 'social_feed' %}">Social</a>
 

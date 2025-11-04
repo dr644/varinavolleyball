@@ -1,7 +1,61 @@
 {% extends 'main/base.html' %}
 {% block content %}
 <div class="container mt-4 text-center">
-  <h1>Fall 2025 Team Roster</h1>
-  {% include 'main/partials/roster_table.html' %}
+  <h1>Team Roster</h1>
+
+  <!-- Varsity / JV Toggle Tabs -->
+  <div class="level-tabs">
+    <a href="?level=Varsity" class="tab {% if level == 'Varsity' or not level %}active{% endif %}">Varsity</a>
+    <a href="?level=JV" class="tab {% if level == 'JV' %}active{% endif %}">JV</a>
+  </div>
+
+  <table class="table table-striped table-bordered mt-3 align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>
+          <a href="?level={{ level }}&sort=number&dir={{ next_dir }}" class="text-white text-decoration-none">
+            #
+            {% if sort_field == "number" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?level={{ level }}&sort=name&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Name
+            {% if sort_field == "name" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?level={{ level }}&sort=position&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Position
+            {% if sort_field == "position" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?level={{ level }}&sort=year&dir={{ next_dir }}" class="text-white text-decoration-none">
+            Year
+            {% if sort_field == "year" %}
+              {% if direction == "asc" %}▲{% else %}▼{% endif %}
+            {% endif %}
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in players %}
+      <tr>
+        <td>{{ p.number }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.position }}</td>
+        <td>{{ p.year }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

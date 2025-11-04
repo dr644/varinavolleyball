@@ -1,0 +1,55 @@
+{% load static %}
+{% for post in posts %}
+<div class="post-card">
+  <div class="p-3 flex flex-col h-full justify-between">
+    <!-- ---------- Title ---------- -->
+    <div>
+      <div class="flex justify-between items-start mb-2">
+        <h2 class="text-lg font-semibold text-blue-800 break-words leading-tight">
+          <a href="{% url 'post_detail' post.id %}" class="hover:underline">{{ post.title }}</a>
+        </h2>
+      </div>
+
+      <!-- ---------- Post Meta (user, likes, comments) ---------- -->
+      <div class="post-meta">
+        <span><i class="fa-solid fa-user"></i> {{ post.user.username }}</span>
+        <span class="stats">
+          <span class="upvotes"><i class="fa-solid fa-thumbs-up"></i> {{ post.total_upvotes }}</span>
+          <span class="comments"><i class="fa-solid fa-comment"></i> {{ post.comments.count }}</span>
+        </span>
+      </div>
+
+      <!-- ---------- Post Content / Media ---------- -->
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" onclick="openImageModal('{{ post.image.url }}')">
+
+      {% elif post.video_url %}
+        <div class="video-wrapper">
+          <iframe
+            src="{{ post.video_url }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+
+      {% elif post.link_url %}
+        <a href="{{ post.link_url }}" target="_blank" class="text-blue-600 underline text-sm truncate">
+          {{ post.link_url }}
+        </a>
+
+      {% else %}
+        <p>{{ post.content|truncatewords:30 }}</p>
+      {% endif %}
+    </div>
+
+    <!-- ---------- Footer (View link) ---------- -->
+    <div class="text-right mt-2">
+      <a href="{% url 'post_detail' post.id %}" class="text-sm text-blue-700 hover:underline">View</a>
+    </div>
+  </div>
+</div>
+{% empty %}
+<p class="text-center text-gray-500 mt-10 col-span-full">No more posts.</p>
+{% endfor %}

@@ -127,6 +127,8 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = '/login/'
+LOGIN_MESSAGE = "You must be logged in to access that page."
+LOGIN_MESSAGE_CATEGORY = "warning"
 
 
 STATIC_URL = '/static/'

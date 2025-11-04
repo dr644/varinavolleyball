@@ -1,56 +1,113 @@
 {% extends 'main/base.html' %}
 {% block content %}
-<div class="social-feed max-w-3xl mx-auto mt-6 px-4">
+<div class="social-feed w-full mx-auto mt-6 px-4">
   <!-- Header -->
-  <div class="flex justify-between items-center mb-6">
+  <div class="flex flex-wrap justify-between items-center mb-6 max-w-6xl mx-auto gap-3">
     <h1 class="text-2xl font-bold text-navy">Varina Volleyball Community</h1>
-    <a href="{% url 'create_post' %}" class="btn-gold btn-create-post">+ New Post</a>
-  </div>
 
-  <!-- Posts Loop -->
-  {% for post in posts %}
-  <div class="bg-white shadow-md rounded-2xl p-4 mb-6 border border-gray-200">
-    <div class="flex justify-between items-start mb-2">
-      <h2 class="text-xl font-semibold text-blue-800 break-words">
-        <a href="{% url 'post_detail' post.id %}" class="hover:underline">{{ post.title }}</a>
-      </h2>
-      <form action="{% url 'upvote_post' post.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="text-gray-500 hover:text-blue-600">👍 {{ post.total_upvotes }}</button>
+    <div class="flex items-center gap-2">
+      <!-- Sort Dropdown -->
+      <form method="get" id="sortForm" class="flex items-center">
+        <label for="sort" class="mr-2 text-sm text-gray-700 whitespace-nowrap">Sort:</label>
+
+        <div class="relative inline-block">
+          <select
+            name="sort"
+            id="sort"
+            class="appearance-none form-control text-sm py-1 pl-3 pr-8 rounded-md border border-gray-300 text-gray-700 cursor-pointer hover:border-navy focus:border-navy focus:ring-0 transition"
+            onchange="document.getElementById('sortForm').submit()"
+            style="min-width: 110px;">
+            <option value="new" {% if request.GET.sort == 'new' or not request.GET.sort %}selected{% endif %}>New</option>
+            <option value="best" {% if request.GET.sort == 'best' %}selected{% endif %}>Best</option>
+          </select>
+
+          <!-- proper dropdown arrow inside select box -->
+          <i class="fa-solid fa-chevron-down absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs pointer-events-none"></i>
+        </div>
       </form>
-    </div>
 
-    <p class="text-gray-600 text-sm mb-3">
-      Posted by <span class="font-semibold text-navy">{{ post.user.username }}</span>
-      • {{ post.created_at|timesince }} ago
-    </p>
 
-    {% if post.image %}
-      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="rounded-xl mt-2 w-full max-h-[500px] object-cover" />
-
-    {% elif post.video_url %}
-      <div class="video-wrapper mt-3 aspect-video">
-        <iframe
-          src="{{ post.video_url }}"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-          class="w-full h-full rounded-xl">
-        </iframe>
-      </div>
-
-    {% elif post.link_url %}
-      <a href="{{ post.link_url }}" target="_blank" rel="noopener" class="text-blue-600 underline break-words">
-        {{ post.link_url }}
+      <!-- New Post Button -->
+      <a href="{% url 'create_post' %}" class="btn-gold btn-create-post ml-2 whitespace-nowrap">
+        + New Post
       </a>
-
-    {% else %}
-      <p class="mt-2 text-gray-700">{{ post.content|truncatewords:40 }}</p>
-    {% endif %}
+    </div>
   </div>
-  {% empty %}
-  <p class="text-center text-gray-500 mt-10">No posts yet. Be the first to share something!</p>
-  {% endfor %}
+
+
+  <!-- ✅ POSTS GRID -->
+  <div id="post-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    {% include 'social/_posts.html' with posts=posts %}
+  </div>
+
+  <!-- ✅ Loader -->
+  <div id="loader" class="text-center mt-8 hidden">
+    <p class="text-gray-500">Loading more posts...</p>
+  </div>
 </div>
+
+<!-- ✅ Image Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <img id="modalImage" src="" alt="Expanded Image" class="max-w-[90%] max-h-[90%] rounded-xl shadow-lg">
+</div>
+
+<script>
+let page = 1;
+let loading = false;
+let endReached = false;
+
+// Infinite Scroll
+window.addEventListener('scroll', () => {
+  if (loading || endReached) return;
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+    loadMorePosts();
+  }
+});
+
+function loadMorePosts() {
+  loading = true;
+  const loader = document.getElementById('loader');
+  loader.classList.remove('hidden');
+
+  const sort = new URLSearchParams(window.location.search).get('sort') || 'new';
+  fetch(`?page=${++page}&sort=${sort}`, { headers: { 'x-requested-with': 'XMLHttpRequest' } })
+    .then(res => res.json())
+    .then(data => {
+      if (!data.html.trim()) {
+        endReached = true;
+        loader.innerHTML = "<p class='text-gray-400'>No more posts.</p>";
+        return;
+      }
+
+      document.getElementById('post-grid').insertAdjacentHTML('beforeend', data.html);
+
+      // ✅ Stop fetching when no more pages
+      if (!data.has_next) {
+        endReached = true;
+        loader.innerHTML = "<p class='text-gray-400'>No more posts.</p>";
+      }
+    })
+    .catch(err => console.error('Error loading posts:', err))
+    .finally(() => {
+      loader.classList.add('hidden');
+      loading = false;
+    });
+}
+
+// Image modal
+function openImageModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = src;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+document.getElementById('imageModal').addEventListener('click', () => {
+  const modal = document.getElementById('imageModal');
+  modal.classList.remove('flex');
+  modal.classList.add('hidden');
+});
+</script>
+
 {% endblock %}

@@ -6,7 +6,16 @@
   {% if post.image %}
     <img src="{{ post.image.url }}" class="rounded-xl mb-4" />
   {% elif post.video_url %}
-    <iframe src="{{ post.video_url }}" class="w-full rounded-xl mb-4"></iframe>
+    <div class="video-wrapper mb-4 aspect-video">
+      <iframe
+        src="{{ post.video_url }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+        class="w-full h-full rounded-xl">
+      </iframe>
+    </div>
   {% elif post.link_url %}
     <a href="{{ post.link_url }}" target="_blank" class="text-blue-500 underline mb-4 block">{{ post.link_url }}</a>
   {% else %}
@@ -33,7 +42,7 @@
   <form method="post" action="{% url 'add_comment' post.id %}" class="mt-4">
     {% csrf_token %}
     {{ comment_form.as_p }}
-    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Comment</button>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700  btn-navy">Comment</button>
   </form>
   {% endif %}
 </div>

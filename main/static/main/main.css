@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5 {
   height: 200px;
   object-fit: contain;
   object-position: center;
-  transform: scale(1.8);
+  transform: scale(1.5);
   transform-origin: center;
   margin: 0 auto;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .hero-section img:hover {
-  transform: scale(1.9);
+  transform: scale(1.7);
 }
 
 .hero-section h2 {

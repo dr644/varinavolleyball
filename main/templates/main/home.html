@@ -4,14 +4,20 @@
 
 <!-- HERO -->
 <section class="hero-section">
-  <h1>VARINA VOLLEYBALL</h1>
-  <img src="{% static 'main/varina.png' %}" alt="Lady Blue Devils Logo">
-  <h2>LADY BLUE DEVILS</h2>
+  <video class="hero-video" autoplay muted loop playsinline poster="{% static 'main/hero-fallback.jpg' %}">
+    <source src="{% static 'main/hero-banner.mp4' %}" type="video/mp4">
+    <!-- optionally WebM / OGG fallbacks -->
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="hero-overlay">
+    <img src="{% static 'main/varina.png' %}" alt="Lady Blue Devils Logo" class="hero-logo">
+  </div>
 </section>
 
 <!-- SUB-BANNER -->
 <div class="sub-banner">
-  Connecting players, alumni, and supporters of Varina Volleyball .
+  Connecting players, alumni, and supporters of Varina Volleyball.
 </div>
 
 <!-- INTRO -->
@@ -85,7 +91,7 @@
         <div class="card spotlight-card mx-auto">
           <img src="{% static 'main/player4.jpg' %}" class="card-img-top" alt="Player 4">
           <div class="card-body">
-            <h5 class="card-title">#17 - Semaj Saunders</h5>
+            <h5 class="card-title">#17 — Semaj Saunders</h5>
             <p class="card-text">Middle | Junior | Captain</p>
           </div>
         </div>
@@ -104,6 +110,7 @@
     </button>
   </div>
 </section>
+
 <!-- SPONSORS SECTION -->
 <section class="sponsors-section hidden">
   <h5>* THANK YOU TO OUR SPONSORS *</h5>

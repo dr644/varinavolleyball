@@ -23,12 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # UNCOMMENT WHEN UPLOADING
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# load_dotenv()
+# SECRET_KEY = os.getenv('SECRET_KEY')
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
+#
+# ALLOWED_HOSTS = ['varinavolleyball.com', 'www.varinavolleyball.com', '127.0.0.1']
 
-ALLOWED_HOSTS = ['varinavolleyball.com', 'www.varinavolleyball.com', '127.0.0.1']
 
+#REMOVE THIS WHEN MOVING TO PRODUCTION
+SECRET_KEY='django-insecure-ww1#f5y8@%!m=v-nytgp+6ngyaeg9acc3ev0$fw56g#=u6d!gp'
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -43,8 +48,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'social'
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,3 +155,4 @@ TEMPLATES[0]['DIRS'] = [BASE_DIR / 'main' / 'templates']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

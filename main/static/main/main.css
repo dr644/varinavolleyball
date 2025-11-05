@@ -259,6 +259,42 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+/* ---------- Varsity / JV Toggle Tabs ---------- */
+.level-tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.level-tabs .tab {
+  flex: 1;
+  max-width: 150px;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 600;
+  border: 2px solid #0A1A4F;
+  background-color: #F8F9FA;
+  color: #0A1A4F;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+}
+
+/* Hover */
+.level-tabs .tab:hover {
+  background-color: #C5B358;
+  color: #FFFFFF;
+}
+
+/* Active state */
+.level-tabs .tab.active {
+  background-color: #0A1A4F;
+  color: #C5B358;
+  border-color: #0A1A4F;
+}
+
+
 /* ---------- Mobile Adjustments ---------- */
 @media (max-width: 768px) {
   .hero-section { height: 200px; }

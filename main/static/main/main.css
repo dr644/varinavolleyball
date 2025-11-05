@@ -237,22 +237,22 @@ h1, h2, h3, h4, h5 {
 /* ---------- Pulse Animation (opacity + glow) ---------- */
 @keyframes pulseLogo {
   0% {
-    opacity: 0.2;
-    transform: scale(.5);
+    opacity: 0.1;
+    transform: scale(.8);
     filter:
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
       drop-shadow(0 0 4px rgba(255, 105, 180, 0));
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.4;
     transform: scale(0.9);
     filter:
       drop-shadow(0 4px 10px rgba(197, 179, 88, 0.8))
       drop-shadow(0 0 8px rgba(255, 105, 180, 0.35));
   }
   100% {
-    opacity: 0.2;
-    transform: scale(.5);
+    opacity: 0.1;
+    transform: scale(.8);
     filter:
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
       drop-shadow(0 0 4px rgba(255, 105, 180, 0));
